@@ -133,7 +133,7 @@ export const navBarConfig: NavBarConfig = {
 		// 预设链接：归档
 		LinkPreset.Archive,
 
-		// 自定义一级下拉菜单示例：外部链接集合
+		// 自定义一级下拉菜单：外部链接集合（后台 /api/settings 的 navLinks 可运行时覆盖）
 		{
 			name: "Links",
 			url: "/links/",
@@ -141,21 +141,9 @@ export const navBarConfig: NavBarConfig = {
 			children: [
 				{
 					name: "GitHub",
-					url: "https://github.com/LyraVoid/Mizuki",
+					url: "https://github.com/starkay711",
 					external: true, // 外部链接，新标签页打开
 					icon: "fa7-brands:github",
-				},
-				{
-					name: "Bilibili",
-					url: "https://space.bilibili.com/701864046",
-					external: true,
-					icon: "fa7-brands:bilibili",
-				},
-				{
-					name: "Gitee",
-					url: "https://gitee.com/matsuzakayuki/Mizuki",
-					external: true,
-					icon: "mdi:git",
 				},
 			],
 		},
