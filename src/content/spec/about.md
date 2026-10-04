@@ -1,49 +1,24 @@
+## 你好，我是 kay 👋
 
-This website is built with the **Astro** framework using the [Mizuki](https://github.com/LyraVoid/Mizuki) theme.
+欢迎来到我的小屋。这里是我在互联网上的一个角落，用来记录笔记、分享文章，也收集一些喜欢的图片。
 
-::github{repo="LyraVoid/Mizuki"}
+### 🔧 在折腾的东西
 
-## 🌟 Theme Features
+- **AI 影像** — 本地跑图、跑视频，探索 AI 创作的边界
+- **建站与 VPS** — 从域名、服务器到博客，喜欢自己动手搭
+- **效率工具** — 总在找让生活更顺手的办法
 
-### 🎨 Design & User Experience
-- **Modern & Elegant Design** - Clean, minimalist interface with beautiful typography
-- **Fully Responsive** - Optimized for all devices from mobile to desktop
-- **Dark/Light Mode** - Automatic theme switching with smooth transitions
-- **Beautiful Typography** - Enhanced readability with JetBrains Mono font
-- **Smooth Animations** - Fluid page transitions and interactive elements
+### 🏠 关于这个小站
 
-### 🔍 Content & Search
-- **Advanced Search** - Powered by [Pagefind](https://pagefind.app/) for fast, accurate results
-- **Enhanced Markdown** - Extended syntax with code highlighting and math support
-- **Interactive Table of Contents** - Auto-scroll navigation for long articles
-- **RSS Feed Generation** - Stay updated with automatic feed generation
-- **Reading Time Estimation** - Know how long articles take to read
-- **Post Categorization** - Organize content with tags and categories
+- 用 Astro + Mizuki 主题搭建，部署在 Cloudflare 上
+- 阳光、温暖、有活力 — 就像我希望的日子一样
+- 内容会慢慢填，先从把小屋收拾舒服开始
 
+### 📬 找到我
 
-
-### 📱 Special Pages
-- **Anime Tracking Page** - Track your anime watching progress with ratings
-- **Friends Links Page** - Showcase friend websites with beautiful cards
-- **Diary/Moments Page** - Share life moments like social media posts
-- **Archive Page** - Organized timeline view of all posts
-- **About Page** - Customizable personal introduction (this page!)
-
-### 🛠 Technical Features
-- **Enhanced Code Blocks** - Powered by [Expressive Code](https://expressive-code.com/)
-- **Math Support** - LaTeX rendering with KaTeX for mathematical expressions
-- **Image Optimization** - PhotoSwipe gallery with lazy loading
-- **SEO Optimized** - Built-in sitemap and meta tags for better search visibility
-- **Performance Optimized** - Fast loading with caching and optimization
-- **Comment System Ready** - Integration support for Twikoo comments
-
-### 🎯 Advanced Markdown Features
-- **Callouts & Admonitions** - Beautiful info boxes with `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`
-- **Mathematical Equations** - Write LaTeX math with `$inline$` and `$$block$$` syntax
-- **GitHub Cards** - Embed repository cards with `::github{repo="user/repo"}`
-- **Syntax Highlighting** - Advanced code highlighting with line numbers
-- **Copy Code Buttons** - Easy code copying functionality
+- GitHub：[starkay711](https://github.com/starkay711)
+- 邮箱：hello@kaywho.com
 
 ---
 
-*Built with ❤️ using Astro and inspired by modern web design principles.*
+*把日子过成喜欢的样子。* ☀️
