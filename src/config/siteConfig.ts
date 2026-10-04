@@ -123,16 +123,16 @@ export const siteConfig: SiteConfig = {
 		// 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
 		src: {
 			desktop: [
-				"/assets/desktop-banner/sun-1.webp",
-				"/assets/desktop-banner/sun-2.webp",
-				"/assets/desktop-banner/sun-3.webp",
-				"/assets/desktop-banner/sun-4.webp",
+				"https://kaywho-settings.imkay-v1.workers.dev/img/sun-1.webp",
+				"https://kaywho-settings.imkay-v1.workers.dev/img/sun-2.webp",
+				"https://kaywho-settings.imkay-v1.workers.dev/img/sun-3.webp",
+				"https://kaywho-settings.imkay-v1.workers.dev/img/sun-4.webp",
 			], // 桌面横幅图片
 			mobile: [
-				"/assets/mobile-banner/sun-m-1.webp",
-				"/assets/mobile-banner/sun-m-2.webp",
-				"/assets/mobile-banner/sun-m-3.webp",
-				"/assets/mobile-banner/sun-m-4.webp",
+				"https://kaywho-settings.imkay-v1.workers.dev/img/sun-m-1.webp",
+				"https://kaywho-settings.imkay-v1.workers.dev/img/sun-m-2.webp",
+				"https://kaywho-settings.imkay-v1.workers.dev/img/sun-m-3.webp",
+				"https://kaywho-settings.imkay-v1.workers.dev/img/sun-m-4.webp",
 			], // 移动横幅图片
 		}, // 使用本地横幅图片
 
