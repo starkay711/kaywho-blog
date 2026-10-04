@@ -212,15 +212,15 @@ const bannerOffset =
 						if (tw && s.bannerSubtitles && s.bannerSubtitles.length) {
 							tw.setAttribute("data-text", JSON.stringify(s.bannerSubtitles));
 						}
-						// 头像（去掉 srcset，否则浏览器优先用 srcset 不换图）
+						// 头像（去掉 srcset，否则浏览器优先用 srcset 不换图；页面可能有多个头像，全部换）
 						if (s.avatarUrl) {
-							var avatar =
-								document.querySelector('img[alt="Profile Image of the Author"]') ||
-								document.querySelector('a[aria-label="Go to About Page"] img');
-							if (avatar) {
-								avatar.src = s.avatarUrl;
-								avatar.removeAttribute("srcset");
-							}
+							var avatars = document.querySelectorAll(
+								'img[alt="Profile Image of the Author"]',
+							);
+							avatars.forEach(function (img) {
+								img.src = s.avatarUrl;
+								img.removeAttribute("srcset");
+							});
 						}
 						// 昵称 & 简介（侧边栏）
 						var aboutLink = document.querySelector('a[aria-label="Go to About Page"]');
