@@ -189,6 +189,33 @@ const bannerOffset =
 			})();
 		</script>
 
+		<!-- kaywho 站点设置：运行时覆盖（管理后台 http://kaywho-settings.imkay-v1.workers.dev 可改标题/文字/横幅图） -->
+		<script is:inline src="https://kaywho-settings.imkay-v1.workers.dev/settings.js"></script>
+		<script is:inline>
+			(function () {
+				function applyTextSettings() {
+					var s = window.__KAYWHO_SETTINGS__;
+					if (!s) return;
+					try {
+						var titleEl = document.querySelector(
+							".banner-text-overlay .banner-title",
+						);
+						if (titleEl && s.bannerTitle) titleEl.textContent = s.bannerTitle;
+						var tw = document.querySelector(
+							".banner-text-overlay .typewriter",
+						);
+						if (tw && s.bannerSubtitles && s.bannerSubtitles.length) {
+							tw.setAttribute("data-text", JSON.stringify(s.bannerSubtitles));
+						}
+					} catch (e) {}
+				}
+				// 注册早于打字机组件，保证先于它执行
+				document.addEventListener("DOMContentLoaded", applyTextSettings);
+				// Swup 页面切换回来时重新应用
+				document.addEventListener("swup:contentReplaced", applyTextSettings);
+			})();
+		</script>
+
 		<!-- 第三方分析脚本 -->
 		<AnalyticsScripts
 			thirdPartyAnalytics={siteConfig.thirdPartyAnalytics}
