@@ -13,13 +13,13 @@ export const siteConfig: SiteConfig = {
 	lang: SITE_LANG,
 
 	themeColor: {
-		hue: 240, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
+		hue: 160, // 墨绿：沉稳硬朗的大自然色调
 		fixed: false, // 对访问者隐藏主题色选择器
 	},
 
 	// 特色页面开关配置（关闭未使用的页面有助于提升 SEO，关闭后请记得在 navbarConfig 中移除对应链接）
 	featurePages: {
-		anime: true, // 番剧页面开关
+		anime: false, // 番剧页面开关（已关闭）
 		diary: true, // 日记页面开关
 		friends: true, // 友链页面开关
 		projects: true, // 项目页面开关
@@ -123,16 +123,16 @@ export const siteConfig: SiteConfig = {
 		// 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
 		src: {
 			desktop: [
-				"/assets/desktop-banner/1.webp",
-				"/assets/desktop-banner/2.webp",
-				"/assets/desktop-banner/3.webp",
-				"/assets/desktop-banner/4.webp",
+				"/assets/desktop-banner/sun-1.webp",
+				"/assets/desktop-banner/sun-2.webp",
+				"/assets/desktop-banner/sun-3.webp",
+				"/assets/desktop-banner/sun-4.webp",
 			], // 桌面横幅图片
 			mobile: [
-				"/assets/mobile-banner/1.webp",
-				"/assets/mobile-banner/2.webp",
-				"/assets/mobile-banner/3.webp",
-				"/assets/mobile-banner/4.webp",
+				"/assets/mobile-banner/sun-m-1.webp",
+				"/assets/mobile-banner/sun-m-2.webp",
+				"/assets/mobile-banner/sun-m-3.webp",
+				"/assets/mobile-banner/sun-m-4.webp",
 			], // 移动横幅图片
 		}, // 使用本地横幅图片
 
