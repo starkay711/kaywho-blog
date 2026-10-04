@@ -244,6 +244,48 @@ const bannerFormats = getImageFormats();
 		</style>`} />
 	)}
 
+	<!-- kaywho 设置：运行时替换横幅图片（必须在下方轮播初始化脚本之前执行） -->
+	<script is:inline>
+		(function () {
+			var s = window.__KAYWHO_SETTINGS__;
+			if (!s) return;
+			try {
+				var carousel = document.getElementById("banner-carousel");
+				if (!carousel) return;
+				function apply(urls, slotClass, tplClass) {
+					if (!urls || !urls.length) return;
+					var nodes = [];
+					var slot = carousel.querySelector("." + slotClass);
+					if (slot) nodes.push(slot);
+					var tpls = carousel.querySelectorAll("." + tplClass);
+					for (var i = 0; i < tpls.length; i++) nodes.push(tpls[i]);
+					if (!nodes.length) return;
+					var frames = [];
+					nodes.forEach(function (n, idx) {
+						var u = urls[idx % urls.length];
+						n.querySelectorAll("img").forEach(function (img) {
+							img.src = u;
+							img.removeAttribute("srcset");
+						});
+						n.querySelectorAll("source").forEach(function (src) {
+							src.srcset = u;
+						});
+						frames.push(n.innerHTML);
+					});
+					// 预填轮播帧缓存，初始化脚本会直接沿用（其内部有"已存在则跳过"逻辑）
+					window.__bannerCarouselFrames =
+						window.__bannerCarouselFrames || {};
+					window.__bannerCarouselFrames[slotClass] = frames;
+					window.__bannerInitialFrameHtml =
+						window.__bannerInitialFrameHtml || {};
+					window.__bannerInitialFrameHtml[slotClass] = frames[0];
+				}
+				apply(s.desktopBanners, "banner-image-slot-desktop", "banner-tpl-desktop");
+				apply(s.mobileBanners, "banner-image-slot-mobile", "banner-tpl-mobile");
+			} catch (e) {}
+		})();
+	</script>
+
 	<!-- 轮播脚本：首帧复用 + Ken Burns + Crossfade + 触摸/鼠标事件 -->
 	<script is:inline data-swup-ignore-script>
 			(function initBannerCarousel() {
