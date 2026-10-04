@@ -207,6 +207,13 @@ const bannerOffset =
 						if (tw && s.bannerSubtitles && s.bannerSubtitles.length) {
 							tw.setAttribute("data-text", JSON.stringify(s.bannerSubtitles));
 						}
+						// 头像
+						if (s.avatarUrl) {
+							var avatar = document.querySelector(
+								'img[alt="Profile Image of the Author"]',
+							);
+							if (avatar) avatar.src = s.avatarUrl;
+						}
 					} catch (e) {}
 				}
 				// 注册早于打字机组件，保证先于它执行
