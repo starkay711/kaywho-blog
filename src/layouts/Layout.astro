@@ -193,26 +193,86 @@ const bannerOffset =
 		<script is:inline src="https://kaywho-settings.imkay-v1.workers.dev/settings.js"></script>
 		<script is:inline>
 			(function () {
+				function esc(s) {
+					return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+				}
 				function applyTextSettings() {
 					var s = window.__KAYWHO_SETTINGS__;
 					if (!s) return;
 					try {
+						// 横幅大标题
 						var titleEl = document.querySelector(
 							".banner-text-overlay .banner-title",
 						);
 						if (titleEl && s.bannerTitle) titleEl.textContent = s.bannerTitle;
+						// 轮播小字
 						var tw = document.querySelector(
 							".banner-text-overlay .typewriter",
 						);
 						if (tw && s.bannerSubtitles && s.bannerSubtitles.length) {
 							tw.setAttribute("data-text", JSON.stringify(s.bannerSubtitles));
 						}
-						// 头像
+						// 头像（去掉 srcset，否则浏览器优先用 srcset 不换图）
 						if (s.avatarUrl) {
-							var avatar = document.querySelector(
-								'img[alt="Profile Image of the Author"]',
-							);
-							if (avatar) avatar.src = s.avatarUrl;
+							var avatar =
+								document.querySelector('img[alt="Profile Image of the Author"]') ||
+								document.querySelector('a[aria-label="Go to About Page"] img');
+							if (avatar) {
+								avatar.src = s.avatarUrl;
+								avatar.removeAttribute("srcset");
+							}
+						}
+						// 昵称 & 简介（侧边栏）
+						var aboutLink = document.querySelector('a[aria-label="Go to About Page"]');
+						var profileCard = aboutLink ? aboutLink.closest(".card-base") : null;
+						if (profileCard) {
+							if (s.nickname) {
+								var nameEl = profileCard.querySelector(".font-bold.text-xl");
+								if (nameEl) nameEl.textContent = s.nickname;
+							}
+							if (typeof s.bio === "string" && s.bio) {
+								var bioEl = profileCard.querySelector(".text-neutral-400");
+								if (bioEl) bioEl.textContent = s.bio;
+							}
+						}
+						// 导航栏标题（左上角）
+						if (s.navbarTitle) {
+							var navBrand = document.querySelector('#navbar a[href="/"] span, #navbar a[href="./"] span');
+							if (navBrand) navBrand.textContent = s.navbarTitle;
+						}
+						// 主题色（内容区底色跟着变）
+						if (typeof s.themeHue === "number") {
+							document.documentElement.style.setProperty("--hue", s.themeHue);
+						}
+						// 导航"链接"下拉（桌面端 + 移动端）
+						if (s.navLinks && s.navLinks.length) {
+							var itemsHtml = s.navLinks.map(function (l) {
+								return (
+									'<a href="' + esc(l.url) + '" target="_blank" rel="noopener noreferrer" class="dropdown-item" aria-label="' + esc(l.name) + '">' +
+									'<div class="flex items-center"><span>' + esc(l.name) + "</span></div></a>"
+								);
+							}).join("");
+							document.querySelectorAll("[data-dropdown]").forEach(function (dd) {
+								var trigger = dd.querySelector("[data-dropdown-trigger]");
+								if (trigger && trigger.textContent.indexOf("链接") !== -1) {
+									var content = dd.querySelector(".dropdown-content");
+									if (content) content.innerHTML = itemsHtml;
+								}
+							});
+							var mItemsHtml = s.navLinks.map(function (l) {
+								return (
+									'<a href="' + esc(l.url) + '" target="_blank" rel="noopener noreferrer" ' +
+									'class="group flex justify-between items-center py-2 pl-6 pr-1 rounded-lg gap-4 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition">' +
+									'<div class="flex items-center transition text-black/60 dark:text-white/60 font-medium">' + esc(l.name) + "</div></a>"
+								);
+							}).join("");
+							document.querySelectorAll("[data-mobile-dropdown]").forEach(function (dd) {
+								var trigger = dd.querySelector("[data-mobile-dropdown-trigger]");
+								if (trigger && trigger.textContent.indexOf("链接") !== -1) {
+									var submenu = dd.querySelector("[data-mobile-submenu]");
+									if (submenu) submenu.innerHTML = mItemsHtml;
+								}
+							});
 						}
 					} catch (e) {}
 				}
